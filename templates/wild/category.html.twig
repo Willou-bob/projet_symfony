@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<h1>Nom de la série</h1>{% endblock %}
+
+{% block body %}
+
+    <div class="row justify-content-center">
+    {% for program in programs %}
+            <div class="card col-8 col-md-4 col-xl-3 m-5">
+                <img src="{{ program.poster }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ program.title }}</h5>
+                    <p class="card-text"><p>{{ program.summary }}</p></p>
+                    <p>Catégorie : {{ program.category.name }}</p>
+                </div>
+            </div>
+    {% endfor %}
+    </div>
+    <a href="{{ path('wild_index') }}">
+        Retour à l'accueil
+    </a>
+
+{% endblock %}
