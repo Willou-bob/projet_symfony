@@ -83,5 +83,28 @@ class WildController extends AbstractController
         ]);
 
     }
+
+    /**
+     * @param string $programTitle
+     * @return Response
+     * @Route("/program/{programTitle<^[a-z0-9-]+$>}", defaults={"slug" = null}, name="show_program")
+     */
+    public function show_Program(string $programTitle) :Response
+    {
+        $programTitle = preg_replace(
+            '/-/',
+            ' ', ucwords(trim(strip_tags($programTitle)), "-")
+        );
+
+        $program = $this->getDoctrine()
+            ->getRepository(Program::class)
+            ->findOneBy(['title' => mb_strtolower($programTitle)]);
+
+        return $this->render('wild/show.html.twig', [
+            'program' => $program,
+            'programTitle' => $programTitle,
+        ]);
+
+    }
 }
 
