@@ -1,21 +1,21 @@
 {% extends 'base.html.twig' %}
-{% block title %}{{ season.id }}{% endblock %}
+{% block title %}{{ episode.id }}{% endblock %}
 
 {% block body %}
-    <h1 class="m-5">Saison {{ season.number }} </h1>
-    <div class="d-flex flex-row bd-highlight justify-content-around mb-3 mt-5">
-    {% for episode in season.episodes %}
-        <div class="card bg-light mb-3" style="max-width: 28rem;">
+
+        <h1>Série {{ program.title }} </h1>
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
             <div class="card-header">Episode {{ episode.number }}</div>
             <div class="card-body">
                 <h5 class="card-title">Title: {{ episode.title }}</h5>
                 <p class="card-text">Synopsis: {{ episode.synopsis }}</p>
             </div>
         </div>
-    {% endfor %}
-</div>
+
     <a href="{{ path('wild_index') }}">
         Retour à l'accueil
     </a>
+
+    <a class="ml-5" href="{{ path('show_program', {'programTitle': program.title }) }}">{{program.title}}</a>
 
 {% endblock %}
