@@ -2,12 +2,13 @@
 
 {% block body %}
     <h1>{{ websitehome }} sur Wild Séries</h1>
-
-    <a href="{{ path('wild_show', { 'slug': "fear-the-walking-dead" }) }}">
-        Testing show() method from WildController with a real program s slug.
+    {% for program in programs %}
+    <a class="d-flex " href="{{ path('show_program', {'programTitle': program.title }) }}">
+        {{ program.title }}
     </a>
+    {% endfor %}
     <br>
     <a href="{{ path('wild_index') }}">
-        Testing index() method from WildController to view all programs.
+        Toutes les séries
     </a>
 {% endblock %}
