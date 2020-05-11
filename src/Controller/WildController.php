@@ -143,7 +143,7 @@ class WildController extends AbstractController
     /**
      * @param Episode $episode
      * @return Response
-     * @Route("/episode/{id<^[a-z0-9-]+$>}", name="show_episode")
+     * @Route("/episode/{id}", name="show_episode")
      */
     public function show_episode(Episode $episode) :Response
     {
