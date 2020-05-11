@@ -6,7 +6,7 @@
     <div class="d-flex flex-row bd-highlight justify-content-around mb-3 mt-5">
     {% for episode in season.episodes %}
         <div class="card bg-light mb-3" style="max-width: 28rem;">
-            <div class="card-header">Episode {{ episode.number }}</div>
+            <div class="card-header"><a href="{{ path('show_episode', {'id': episode.id }) }}">Episode {{ episode.number }}</a></div>
             <div class="card-body">
                 <h5 class="card-title">Title: {{ episode.title }}</h5>
                 <p class="card-text">Synopsis: {{ episode.synopsis }}</p>
