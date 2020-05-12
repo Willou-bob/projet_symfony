@@ -7,8 +7,19 @@
         {{ program.title }}
     </a>
     {% endfor %}
+
     <br>
+
+    {% for category in categories %}
+        <a class="d-flex " href="{{ path('show_category', {'categoryName': category.name }) }}">
+            {{ category.name }}
+        </a>
+    {% endfor %}
+
+    <br>
+
     <a href="{{ path('wild_index') }}">
         Toutes les séries
     </a>
+
 {% endblock %}
