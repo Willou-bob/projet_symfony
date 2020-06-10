@@ -89,26 +89,26 @@ class WildController extends AbstractController
     }
 
     /**
-     * @param string $programTitle
+     * @param Program $program
      * @return Response
      * @Route("/program/{programTitle}", name="show_program")
      */
-    public function show_Program(string $programTitle) :Response
+    public function show_Program(Program $program) :Response
     {
-        if (!$programTitle) {
+        if (!$program) {
             throw $this->createNotFoundException(
                 'No programs for this category.'
             );
         }
 
-        $programTitle = preg_replace(
+        $program = preg_replace(
             '/-/',
-            ' ', ucwords(trim(strip_tags($programTitle)), "-")
+            ' ', ucwords(trim(strip_tags($program)), "-")
         );
 
         $program = $this->getDoctrine()
             ->getRepository(Program::class)
-            ->findOneBy(['title' => mb_strtolower($programTitle)]);
+            ->findOneBy(['title' => mb_strtolower($program)]);
 
         $seasons = $this->getDoctrine()
             ->getRepository(Season::class)
@@ -118,7 +118,6 @@ class WildController extends AbstractController
 
         return $this->render('wild/show.html.twig', [
             'websitehome' => 'Welcome',
-            'slug' => $programTitle,
             'program' => $program,
             'seasons' => $seasons,
         ]);
