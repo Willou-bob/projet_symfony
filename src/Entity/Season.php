@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -20,21 +21,25 @@ class Season
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="ne me laisse pas tout vide")
      */
     private $number;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="ne me laisse pas tout vide")
      */
     private $year;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="ne me laisse pas tout vide")
      */
     private $description;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Program", inversedBy="seasons")
+     * @Assert\NotBlank(message="ne me laisse pas tout vide")
      */
     private $program;
 
