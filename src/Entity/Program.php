@@ -40,17 +40,17 @@ class Program
     private $category;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $synopsis;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $country;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $year;
 
@@ -123,7 +123,7 @@ class Program
         return $this->synopsis;
     }
 
-    public function setSynopsis(string $synopsis): self
+    public function setSynopsis(?string $synopsis): self
     {
         $this->synopsis = $synopsis;
 
@@ -135,7 +135,7 @@ class Program
         return $this->country;
     }
 
-    public function setCountry(string $country): self
+    public function setCountry(?string $country): self
     {
         $this->country = $country;
 
@@ -147,7 +147,7 @@ class Program
         return $this->year;
     }
 
-    public function setYear(int $year): self
+    public function setYear(?int $year): self
     {
         $this->year = $year;
 
