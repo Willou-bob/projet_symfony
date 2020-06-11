@@ -27,11 +27,11 @@ class Actor
     /**
      * @ORM\ManyToMany(targetEntity=Program::class, inversedBy="actors")
      */
-    private $program;
+    private $programs;
 
     public function __construct()
     {
-        $this->program = new ArrayCollection();
+        $this->programs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -54,15 +54,15 @@ class Actor
     /**
      * @return Collection|Program[]
      */
-    public function getProgram(): Collection
+    public function getPrograms(): Collection
     {
-        return $this->program;
+        return $this->programs;
     }
 
     public function addProgram(Program $program): self
     {
-        if (!$this->program->contains($program)) {
-            $this->program[] = $program;
+        if (!$this->programs->contains($program)) {
+            $this->programs[] = $program;
         }
 
         return $this;
@@ -70,8 +70,8 @@ class Actor
 
     public function removeProgram(Program $program): self
     {
-        if ($this->program->contains($program)) {
-            $this->program->removeElement($program);
+        if ($this->programs->contains($program)) {
+            $this->programs->removeElement($program);
         }
 
         return $this;
