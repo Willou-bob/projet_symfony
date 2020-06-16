@@ -162,7 +162,7 @@ class WildController extends AbstractController
     /**
      * @param Actor $actor
      * @return Response
-     * @Route("/actor/{id}", name="show_actor")
+     * @Route("/wild/actor/{id}", name="show_actor")
      */
     public function show_actor(Actor $actor) :Response
     {
