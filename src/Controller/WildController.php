@@ -69,7 +69,7 @@ class WildController extends AbstractController
 */
     /**
      * @param string $categoryName
-     * @Route("/category/{categoryName}", name="show_category")
+     * @Route("/wild/category/{categoryName}", name="show_category")
      * @return Response
      */
     public function show_Category(string $categoryName) :Response
@@ -128,7 +128,7 @@ class WildController extends AbstractController
     /**
      * @param Season $season
      * @return Response
-     * @Route("/season/{id<^[0-9-]+$>}", name="show_season")
+     * @Route("/wild/season/{id<^[0-9-]+$>}", name="show_season")
      */
     public function show_Season(Season $season) :Response
     {
@@ -146,7 +146,7 @@ class WildController extends AbstractController
     /**
      * @param Episode $episode
      * @return Response
-     * @Route("/episode/{id<^[0-9-]+$>}", name="show_episode")
+     * @Route("/wild/episode/{id<^[0-9-]+$>}", name="show_episode")
      */
     public function show_episode(Episode $episode) :Response
     {
