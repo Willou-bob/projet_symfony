@@ -39,6 +39,12 @@ class Actor
      */
     private $picture;
 
+    /**
+     * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="ne me laisse pas tout vide")
+     */
+    private $biography;
+
     public function __construct()
     {
         $this->programs = new ArrayCollection();
@@ -95,6 +101,18 @@ class Actor
     public function setPicture(string $picture): self
     {
         $this->picture = $picture;
+
+        return $this;
+    }
+
+    public function getBiography(): ?string
+    {
+        return $this->biography;
+    }
+
+    public function setBiography(string $biography): self
+    {
+        $this->biography = $biography;
 
         return $this;
     }
