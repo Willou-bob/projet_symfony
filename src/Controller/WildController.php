@@ -92,7 +92,7 @@ class WildController extends AbstractController
     /**
      * @param string $programTitle
      * @return Response
-     * @Route("/wild/{programTitle}", name="show_program")
+     * @Route("/wild/program/{programTitle}", name="show_program")
      */
     public function show_Program(string $programTitle) :Response
     {
@@ -166,12 +166,26 @@ class WildController extends AbstractController
      */
     public function show_actor(Actor $actor) :Response
     {
-
         $programs = $actor->getPrograms();
 
         return $this->render('wild/actor.html.twig', [
             'actor'=>$actor,
             'programs'=>$programs
+        ]) ;
+    }
+
+    /**
+     * @return Response
+     * @Route("/wild/actorPage", name="show_actorPage")
+     */
+    public function show_actorPage() :Response
+    {
+        $actors = $this->getDoctrine()
+            ->getRepository(Actor::class)
+            ->findAll();
+
+        return $this->render('wild/actorPage.html.twig', [
+            'actors'=>$actors,
         ]) ;
     }
 }

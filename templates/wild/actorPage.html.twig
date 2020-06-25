@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les acteurs{% endblock %}
+
+{% block body %}
+    <div class="row justify-content-center">
+    {% for actor in actors %}
+        <div class="card col-8 col-md-4 col-xl-3 m-5" style="width: 18rem;">
+            <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{ actor.name }}</h5>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
