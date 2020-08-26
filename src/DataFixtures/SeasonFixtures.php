@@ -14,14 +14,15 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
     {
         $faker = Faker\Factory::create('fr_FR');
 
-        for ($i = 0 ; $i <= 5 ; $i++) {
+        for ($i = 0 ; $i <= 10 ; $i++) {
             $season = new Season();
             $season->setNumber($faker->numberBetween(1,5));
             $season->setDescription($faker->text(50));
             $season->setYear($faker->year);
-            $manager->persist($season);
+            $season->setProgram($this->getReference('program_' . rand(0,5)));
             $this->addReference('season_' . $i, $season);
-            $season->setProgram($this->getReference('program_0'));
+
+            $manager->persist($season);
         }
         $manager->flush();
     }
