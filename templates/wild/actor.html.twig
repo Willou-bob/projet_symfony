@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ actor.name }}{% endblock %}
+
+{% block body %}
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">{{ actor.name }}</h5>
+    {% for program in actor.programs %}
+        <a href="{{  path('show_program', {'programTitle': program.title }) }}" class="btn btn-primary">{{ program.title }}</a>
+    {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
