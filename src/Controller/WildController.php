@@ -69,7 +69,7 @@ class WildController extends AbstractController
 */
     /**
      * @param string $categoryName
-     * @Route("/category/{categoryName}", name="show_category")
+     * @Route("/wild/category/{categoryName}", name="show_category")
      * @return Response
      */
     public function show_Category(string $categoryName) :Response
@@ -92,7 +92,7 @@ class WildController extends AbstractController
     /**
      * @param string $programTitle
      * @return Response
-     * @Route("/wild/{programTitle}", name="show_program")
+     * @Route("/wild/program/{programTitle}", name="show_program")
      */
     public function show_Program(string $programTitle) :Response
     {
@@ -128,7 +128,7 @@ class WildController extends AbstractController
     /**
      * @param Season $season
      * @return Response
-     * @Route("/season/{id<^[0-9-]+$>}", name="show_season")
+     * @Route("/wild/season/{id<^[0-9-]+$>}", name="show_season")
      */
     public function show_Season(Season $season) :Response
     {
@@ -146,7 +146,7 @@ class WildController extends AbstractController
     /**
      * @param Episode $episode
      * @return Response
-     * @Route("/episode/{id<^[0-9-]+$>}", name="show_episode")
+     * @Route("/wild/episode/{id<^[0-9-]+$>}", name="show_episode")
      */
     public function show_episode(Episode $episode) :Response
     {
@@ -162,16 +162,30 @@ class WildController extends AbstractController
     /**
      * @param Actor $actor
      * @return Response
-     * @Route("/actor/{id}", name="show_actor")
+     * @Route("/wild/actor/{id}", name="show_actor")
      */
     public function show_actor(Actor $actor) :Response
     {
-
         $programs = $actor->getPrograms();
 
         return $this->render('wild/actor.html.twig', [
             'actor'=>$actor,
             'programs'=>$programs
+        ]) ;
+    }
+
+    /**
+     * @return Response
+     * @Route("/wild/actorPage", name="show_actorPage")
+     */
+    public function show_actorPage() :Response
+    {
+        $actors = $this->getDoctrine()
+            ->getRepository(Actor::class)
+            ->findAll();
+
+        return $this->render('wild/actorPage.html.twig', [
+            'actors'=>$actors,
         ]) ;
     }
 }

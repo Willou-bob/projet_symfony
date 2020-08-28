@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use App\Repository\ActorRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -21,6 +22,8 @@ class Actor
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="ne me laisse pas tout vide")
+     * @Assert\Length(max="255", maxMessage="La catégorie saisie {{ value }} est trop longue, elle ne devrait pas dépasser {{ limit }} caractères")
      */
     private $name;
 
@@ -28,6 +31,19 @@ class Actor
      * @ORM\ManyToMany(targetEntity=Program::class, inversedBy="actors")
      */
     private $programs;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="ne me laisse pas tout vide")
+     * @Assert\Length(max="255", maxMessage="La catégorie saisie {{ value }} est trop longue, elle ne devrait pas dépasser {{ limit }} caractères")
+     */
+    private $picture;
+
+    /**
+     * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="ne me laisse pas tout vide")
+     */
+    private $biography;
 
     public function __construct()
     {
@@ -73,6 +89,30 @@ class Actor
         if ($this->programs->contains($program)) {
             $this->programs->removeElement($program);
         }
+
+        return $this;
+    }
+
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(string $picture): self
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    public function getBiography(): ?string
+    {
+        return $this->biography;
+    }
+
+    public function setBiography(string $biography): self
+    {
+        $this->biography = $biography;
 
         return $this;
     }

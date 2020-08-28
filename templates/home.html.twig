@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
+    {% include 'carousel.html.twig' %}
+
     <h1>{{ websitehome }} sur Wild Séries</h1>
     {% for program in programs %}
     <a class="d-flex " href="{{ path('show_program', {'programTitle': program.title }) }}">
