@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Category;
 use App\Entity\Program;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -14,7 +15,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
 
             'summary' => 'Le policier Rick Grimes se réveille après un long coma. Il découvre avec effarement que le monde, ravagé par une épidémie, est envahi par les morts-vivants.',
 
-            'category' => 'category_4',
+            'category' => 'category_1',
 
             'poster' => 'https://m.media-amazon.com/images/M/MV5BZmFlMTA0MmUtNWVmOC00ZmE1LWFmMDYtZTJhYjJhNGVjYTU5XkEyXkFqcGdeQXVyMTAzMDM4MjM0._V1_.jpg'
 
@@ -24,7 +25,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
 
             'summary' => 'Plusieurs frères et sœurs qui, enfants, ont grandi dans la demeure qui allait devenir la maison hantée la plus célèbre des États-Unis, sont contraints de se réunir pour finalement affronter les fantômes de leur passé.',
 
-            'category' => 'category_4',
+            'category' => 'category_2',
 
             'poster' => 'https://m.media-amazon.com/images/M/MV5BMTU4NzA4MDEwNF5BMl5BanBnXkFtZTgwMTQxODYzNjM@._V1_SY1000_CR0,0,674,1000_AL_.jpg'
 
@@ -44,7 +45,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
 
             'summary' => 'Un yaourt susceptible, des soldats lycanthropes, des robots déchaînés, des monstres-poubelles, des chasseurs de primes cyborgs, des araignées extraterrestres et des démons assoiffés de sang : tout ce beau monde est réuni dans 18 courts métrages animés déconseillés aux âmes sensibles.',
 
-            'category' => 'category_4',
+            'category' => 'category_5',
 
             'poster' => 'https://m.media-amazon.com/images/M/MV5BMTc1MjIyNDI3Nl5BMl5BanBnXkFtZTgwMjQ1OTI0NzM@._V1_SY1000_CR0,0,674,1000_AL_.jpg'
 
@@ -64,7 +65,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
 
             'summary' => 'La série se déroule au tout début de l épidémie relatée dans la série mère The Walking Dead et se passe dans la ville de Los Angeles, et non à Atlanta. Madison est conseillère dans un lycée de Los Angeles. Depuis la mort de son mari, elle élève seule ses deux enfants : Alicia, excellente élève qui découvre les premiers émois amoureux, et son grand frère Nick qui a quitté la fac et a sombré dans la drogue.',
 
-            'category' => 'category_4',
+            'category' => 'category_5',
 
             'poster' => 'https://m.media-amazon.com/images/M/MV5BYWNmY2Y1NTgtYTExMS00NGUxLWIxYWQtMjU4MjNkZjZlZjQ3XkEyXkFqcGdeQXVyMzQ2MDI5NjU@._V1_SY1000_CR0,0,666,1000_AL_.jpg'
 
@@ -74,7 +75,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
 
             'summary' =>'Scandinavie, à la fin du VIII siècle. Ragnar Lodbrok, un jeune guerrier viking, est avide d’aventures et de nouvelles conquêtes. Lassé des pillages sur les terres de l’Est, il se met en tête d’explorer l’Ouest par la mer. Malgré la réprobation de son chef, Haraldson, il se fie aux signes et à la volonté des dieux et construit une nouvelle génération de vaisseaux, plus légers et plus rapides. Mais alors qu’il conduit des raids toujours plus audacieux loin de chez lui, Ragnar est menacé de traîtrise sur ses propres terres. Pour protéger sa liberté, sa famille et sa vie, il devra lutter contre bien des ennemis.',
 
-            'category' => 'category_1',
+            'category' => 'category_5',
 
             'poster' => 'https://m.media-amazon.com/images/M/MV5BZWNlZmNiNzItYWMwNC00ODYxLThlNjYtMjU3NzlmNDQxMTY2XkEyXkFqcGdeQXVyMTA3MzQ4MTc0._V1_SY1000_CR0,0,666,1000_AL_.jpg'
         ]
@@ -93,8 +94,8 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
 
             $this->addReference('program_' . $i, $program);
 
-            $i++;
             $program->setCategory($this->getReference('category_0'));
+            $i++;
         }
             $manager->flush();
     }
