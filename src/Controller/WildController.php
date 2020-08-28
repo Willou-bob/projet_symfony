@@ -91,7 +91,7 @@ class WildController extends AbstractController
     /**
      * @param string $programTitle
      * @return Response
-     * @Route("/program/{programTitle}", name="show_program")
+     * @Route("/wild/{programTitle}", name="show_program")
      */
     public function show_Program(string $programTitle) :Response
     {
