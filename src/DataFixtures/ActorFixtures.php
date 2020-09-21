@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Service\Slugify;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use App\Entity\Actor;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -71,6 +72,10 @@ class ActorFixtures extends Fixture implements DependentFixtureInterface
             $actor->setPicture($wiki ['picture']);
             $actor->setBiography($wiki ['biography']);
 
+            $slugify = new Slugify();
+            $slug = $slugify->generate($actor->getName());
+            $actor->setSlug($slug);
+
             $manager->persist($actor);
             $actor->addProgram($this->getReference('program_0'));
         }
@@ -80,6 +85,10 @@ class ActorFixtures extends Fixture implements DependentFixtureInterface
             $actor->setName($faker->name(10));
             $actor->setPicture($faker->image(null,640,480,null,true,true,null));
             $actor->setBiography($faker->text(100));
+
+            $slugify = new Slugify();
+            $slug = $slugify->generate($actor->getName());
+            $actor->setSlug($slug);
 
             $manager->persist($actor);
             $actor->addProgram($this->getReference('program_' . rand(0,5)));
