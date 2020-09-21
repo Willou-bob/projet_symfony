@@ -45,6 +45,11 @@ class Actor
      */
     private $biography;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
+
     public function __construct()
     {
         $this->programs = new ArrayCollection();
@@ -113,6 +118,18 @@ class Actor
     public function setBiography(string $biography): self
     {
         $this->biography = $biography;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }
